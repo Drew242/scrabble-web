@@ -1,4 +1,7 @@
 class Play < ActiveRecord::Base
+  validates :word, format: { with: /\A[a-zA-Z]+\z/,
+    message: "only allows letters" }
+  validates :word, length: { minimum: 1, maximum: 7 }
 
   def letter_scores
     {"A"=>1, "B"=>3, "C"=>3, "D"=>2, "E"=>1, "F"=>4, "G"=>2, "H"=>4, "I"=>1, "J"=>8,
